@@ -15,11 +15,12 @@ Node initGame()
 
 	char *initial = (char *)malloc(MAX_BOARD * sizeof(char));
 	initial[0] = 1;
+	for (int i = 1; i < MAX_BOARD; i++)
+		initial[i] = 0;
 
 	node = nodeAlloc();
 
 	initBoard(node, initial);
-
 	node->depth = 0;
 
 	return node;
@@ -82,10 +83,16 @@ double evaluateBoard(Node node)
 	char isKnight;
 
 	i = 0;
-	while (i < MAX_BOARD && dist > 0)
+	while (i < MAX_BOARD)
 	{
-		isKnight = board[i];
-		if (isKnight == 1) dist = MAX_BOARD - i;
+		// On trouve la case où est notre cavalier
+		if (board[i] == 1)
+		{
+			// printf("Cavalier case %d\n", i);
+			dist = MAX_BOARD - i - 1;
+			// printf(" -> dist = %d\n", dist);
+			return dist;
+		}
 		i++;
 	}
 
@@ -101,6 +108,8 @@ int isValidPosition(Node node, int pos)
 
 	char *board = node->board;
 
+	int valid = 0;
+
 	for (int i = 0; i < WH_BOARD; i++)
 	{
 		for (int j = 0; j < WH_BOARD; j++)
@@ -109,17 +118,17 @@ int isValidPosition(Node node, int pos)
 			{
 				if ((ii - i) * (ii - i) + (jj - j) * (jj - j) == 5)
 				{
-					return 1;
+					valid++;
 				}
-				else return 0;
+
 			}
 		}
 	}
 	
-	return 0;
+	return valid;
 }
 
-// Return a new item where a new queen is added at position pos if possible. NULL if not valid
+// Return a new item where a new knight is added at position pos if possible. NULL if not valid
 Node getChildBoard(Node node, int pos)
 {
 
@@ -130,7 +139,12 @@ Node getChildBoard(Node node, int pos)
 		// printf("testvalid\n");
 		/* allocate and init child node */
 		child_p = nodeAlloc();
-		initBoard(child_p, node->board);
+
+		char *initial = (char *)malloc(MAX_BOARD * sizeof(char));
+		for (int i = 0; i < MAX_BOARD; i++)
+		initial[i] = 0;
+
+		initBoard(child_p, initial);
 
 		/* Make move (On place une nouvelle reine)*/
 		// Est ce qu'on doit vérifier avec evaluateBoard si les reines sont déjà placées ?

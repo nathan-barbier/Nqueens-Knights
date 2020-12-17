@@ -41,8 +41,8 @@ void bfs(void)
 		/* Get the first item on the open list */
 		// printf("inf\n");
 		cur_node = popFirst(&openList_p);
-		printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
-		printBoard(cur_node);
+		// printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
+		// printBoard(cur_node);
 
 		/* Add it to the "visited" list */
 		addLast(&closedList_p, cur_node);
@@ -94,7 +94,7 @@ void dfs(void)
 		/* Get the first item on the open list */
 		// printf("inf\n");
 		cur_node = popFirst(&openList_p);
-		printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
+		// printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
 		// printBoard(cur_node);
 
 		/* Add it to the "visited" list */
@@ -143,7 +143,6 @@ int main()
 
 	printf("\nInitial:");
 	Node initial_state = initGame();
-	printf("Init board : board = %s\n", initial_state->board);
 	printBoard(initial_state);
 
 	printf("\nSearching ...\n");
@@ -153,7 +152,7 @@ int main()
 	printList(openList_p);
 	// printList(closedList_p);
 
-	// bfs();
+	bfs();
 	dfs();
 	printf("Finished!\n");
 

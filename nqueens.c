@@ -69,10 +69,10 @@ void bfs(void)
 					// printBoard(child_p);
 
 					/* Ignore this child if already visited */
-					// if (!onList(&closedList_p, child_p->board))
-					// {
-					addLast(&openList_p, child_p);
-					// }
+					if (!onList(&closedList_p, child_p->board))
+					{
+						addLast(&openList_p, child_p);
+					}
 					/* Add child node to openList */
 				}
 			}
@@ -141,7 +141,7 @@ int main()
 
 	printf("\nInitial:");
 	Node initial_state = initGame();
-	printf("Init board : board = %s\n", initial_state->board);
+	// printf("Init board : board = %s\n", initial_state->board);
 	printBoard(initial_state);
 
 	printf("\nSearching ...\n");
@@ -151,8 +151,8 @@ int main()
 	printList(openList_p);
 	// printList(closedList_p);
 
-	// bfs();
-	dfs();
+	bfs();
+	// dfs();
 	printf("Finished!\n");
 
 	/* clean lists */
