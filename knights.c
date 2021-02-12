@@ -133,6 +133,50 @@ void dfs(void)
 	}
 }
 
+void UCS(void)
+{
+	Item *cur_node, *child_p, *temp;
+	int i;
+
+	while (listCount(&openList_p))
+	{
+		cur_node = popBest(&openList_p);
+
+		//si c'est le bon noeud
+		if (evaluateBoard(cur_node) == 0.0)
+		{
+			showSolution(cur_node);
+			return;
+		}
+		if (!onList(&closedList_p, cur_node->board))
+		{
+			addLast(&closedList_p, cur_node);
+			for (int i = 0; i < MAX_BOARD; i++)
+			{
+				child_p = getChildBoard(cur_node, i);
+				if (child_p)
+				{
+					temp = onList(&openList_p, child_p->board);
+					if (temp)
+					{
+						//printf("squalalala 1\n");
+						if (temp->f > child_p->f)
+						{
+							delList(&openList_p, temp);
+							addLast(&openList_p, child_p);
+						}
+					}
+					if (!onList(&closedList_p, child_p->board))
+					{
+						//printf("squalalala 2\n");
+						addLast(&openList_p, child_p);
+					}
+				}
+			}
+		}
+	}
+}
+
 int main()
 {
 	/* init lists */
@@ -152,8 +196,9 @@ int main()
 	printList(openList_p);
 	// printList(closedList_p);
 
-	bfs();
-	dfs();
+	// bfs();
+	// dfs();
+	UCS();
 	printf("Finished!\n");
 
 	/* clean lists */

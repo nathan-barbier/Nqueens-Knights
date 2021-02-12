@@ -18,6 +18,7 @@ knights.o: knights.c
 	
 knights: knights.o board_k.o list.o board_k.h list.h item.h
 	gcc -o knights knights.o board_k.o list.o
+	./knights
 
 clean:
 	rm *.o nqueens knights

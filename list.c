@@ -62,6 +62,7 @@ Item *onList(list_t *list, char *board)
 	Item *pitem; //pointeur de noeud
 	int i, diff;
 	pitem = list->first;		//pointe sur le 1er el de la liste
+	if (!pitem) return NULL;
 	while (pitem->next != NULL) //tant que fin liste non atteinte
 	{
 		i = 0;
@@ -143,8 +144,21 @@ void delList(list_t *list, Item *node)
 // return and remove best item with minimal f value
 Item *popBest(list_t *list) // and remove the best board from the list.
 {
-	Item *item = NULL;
-	return item;
+
+	assert(list);	
+
+	Item *item = list->first;
+	Item *imin = item;
+
+	while (item->next)
+	{
+		item = item->next;
+		if (item->f < imin->f) imin = item;
+	}
+
+	delList(list, imin);
+
+	return imin;
 }
 
 // add item in top
@@ -258,12 +272,10 @@ int main()
 	printList(openList);
 	printf("\n");
 
-
 	Item *node = popBest( &openList );
 	// printf("best node = %.2f\n", node->f);
 	// printList(openList);
 	// printf("\n");
-	
 
 	strcpy(str, "23");
 	node = onList(&openList, str);

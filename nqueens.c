@@ -73,7 +73,7 @@ void bfs(void)
 					{
 						addLast(&openList_p, child_p);
 					}
-					/* Add child node to openList */
+					/* Add child node to openList_p */
 				}
 			}
 		}
@@ -124,7 +124,7 @@ void dfs(void)
 					{
 						addFirst(&openList_p, child_p);
 					}
-					/* Add child node to openList */
+					/* Add child node to openList_p */
 				}
 			}
 		}

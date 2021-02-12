@@ -152,6 +152,7 @@ Node getChildBoard(Node node, int pos)
 		/* link child to parent for backtrack */
 		child_p->parent = node;
 		child_p->depth = (child_p->parent)->depth + 1;
+		child_p->f = child_p->depth;
 	}
 
 	return child_p;
