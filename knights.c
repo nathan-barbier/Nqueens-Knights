@@ -199,8 +199,8 @@ int main()
 	start = clock();
 
 	// bfs();
-	dfs();
-	// UCS();
+	// dfs();
+	UCS();
 	end = clock();
 	cpu_time_used = ((double)(end - start)) / CLOCKS_PER_SEC;
 	printf("Finished in %e seconds!\n", cpu_time_used);

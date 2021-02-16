@@ -3,7 +3,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <math.h>
-#include "board_k.h"
+#include "board.h"
 
 #include <string.h>
 
@@ -70,7 +70,10 @@ void initBoard(Node node, char *board)
 
 	/* Copy board */
 
-	strcpy(node->board, board);
+	for (int i =0; i < MAX_BOARD; i++)
+	{
+		node->board[i] = board[i];
+	}
 }
 
 // Return 0 if all queens are placed. Positive otherwise
