@@ -60,7 +60,7 @@ Ce projet est constitué de deux parties :
 | BFS |  |  | ---- |
 | DFS | 8 | 1970 | +++ |
 
-    Dans ce cas l'algorithme de **parcourt en profondeur (DFS)** est nettement plus rapide.
+> Dans ce cas l'algorithme de **parcourt en profondeur (DFS)** est nettement plus rapide.
 
 ---
 
