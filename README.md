@@ -57,7 +57,7 @@ Ce projet est constitué de deux parties :
 
 | Algorithme | Etapes | Noeuds parcourus | Temps |
 | ----------- | ----------- | ----------- | ----------- |
-| BFS |  |  | --- |
+| BFS |  |  | ---- |
 | DFS | 8 | 1970 | +++ |
 
     Dans ce cas l'algorithme de **parcourt en profondeur (DFS)** est nettement plus rapide.
