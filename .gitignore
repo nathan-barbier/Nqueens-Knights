@@ -52,3 +52,8 @@ Mkfile.old
 dkms.conf
 
 .vscode/
+
+#Executables
+
+knights
+nqueens
