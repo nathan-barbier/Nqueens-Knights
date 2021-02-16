@@ -15,6 +15,7 @@ nqueens.o: nqueens.c
 
 nqueens: nqueens.o board.o list.o board.h list.h item.h
 	${CC} ${CCOPTS} -o nqueens nqueens.o board.o list.o
+	./nqueens
 
 knights.o: knights.c
 	${CC} ${CCOPTS} -c knights.c

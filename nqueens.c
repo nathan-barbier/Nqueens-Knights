@@ -11,8 +11,7 @@ list_t closedList_p;
 
 void showSolution(Node goal)
 {
-	int i = 0,
-		j;
+	int i = 0;
 
 	printf("\nSolution:");
 
@@ -32,9 +31,8 @@ void showSolution(Node goal)
 void bfs(void)
 {
 	Node cur_node,
-		child_p,
-		temp;
-	int i;
+		child_p;
+
 	while (listCount(&openList_p))
 	{
 		/* While items are on the open list */
@@ -73,7 +71,7 @@ void bfs(void)
 					{
 						addLast(&openList_p, child_p);
 					}
-					/* Add child node to openList_p */
+					/* Add child node to openList */
 				}
 			}
 		}
@@ -85,9 +83,8 @@ void bfs(void)
 void dfs(void)
 {
 	Node cur_node,
-		child_p,
-		temp;
-	int i;
+		child_p;
+		
 	while (listCount(&openList_p))
 	{
 		/* While items are on the open list */
@@ -124,7 +121,55 @@ void dfs(void)
 					{
 						addFirst(&openList_p, child_p);
 					}
-					/* Add child node to openList_p */
+					/* Add child node to openList */
+				}
+			}
+		}
+	}
+}
+
+void UCS(void)
+{
+	Item *cur_node, *child_p, *temp;
+	int i;
+
+	while (listCount(&openList_p))
+	{
+		cur_node = popBest(&openList_p);
+		//si c'est le bon noeud
+		if (evaluateBoard(cur_node) == 0.0)
+		{
+			showSolution(cur_node);
+			return;
+		}
+		if (!onList(&closedList_p, cur_node->board))
+		{
+			addLast(&closedList_p, cur_node);
+			for (int i = 0; i < MAX_BOARD; i++)
+			{
+				child_p = getChildBoard(cur_node, i);
+				if (child_p != NULL)
+				{
+					child_p->f = (child_p->depth);
+					temp = onList(&openList_p, child_p->board);
+					if (temp)
+					{
+						//printf("squalalala 1\n");
+						if (temp->f > child_p->f)
+						{
+							delList(&openList_p, temp);
+							addLast(&openList_p, child_p);
+						}
+					}
+					if (!onList(&closedList_p, child_p->board))
+					{
+						//printf("squalalala 2\n");
+						addLast(&openList_p, child_p);
+					}
+					// else
+					// {
+					// 	addLast(&openList_p,child_p);
+					// }
 				}
 			}
 		}
@@ -148,11 +193,15 @@ int main()
 
 	addFirst(&openList_p, initial_state);
 
+	initial_state->f = 0.0;
+	addFirst(&openList_p, initial_state);
+
 	printList(openList_p);
 	// printList(closedList_p);
 
 	bfs();
-	// dfs();
+	//dfs();
+	// UCS();
 	printf("Finished!\n");
 
 	/* clean lists */
