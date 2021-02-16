@@ -48,13 +48,10 @@ Ce projet est constitué de deux parties :
   
 ### Structure du code
 
-La structure des noeuds est gérée dans le fichier **item.h**.
-
-Toutes les fonctions qui permettent de créer, modifier ou rechercher à l'interieur des listes sont dans le module **list.c**.
-
-L'initialisation, la vérification et la création de nouveaux états du plateau de jeu sont gérées dans le module **board.c**.
-
-Les algorithmes sont implémentés dans le module **nqueens.c**.
+- La structure des noeuds est gérée dans le fichier **item.h**.
+- Toutes les fonctions qui permettent de créer, modifier ou rechercher à l'interieur des listes sont dans le module **list.c**.
+- L'initialisation, la vérification et la création de nouveaux états du plateau de jeu sont gérées dans le module **board.c**.
+- Les algorithmes sont implémentés dans le module **nqueens.c**.
 
 ### Compraison des algorithmes
 
@@ -90,13 +87,10 @@ Les algorithmes sont implémentés dans le module **nqueens.c**.
   
 ### Structure du code pour Knights
 
-La structure des noeuds est gérée dans le fichier **item.h**.
-
-Toutes les fonctions qui permettent de créer, modifier ou rechercher à l'interieur des listes sont dans le module **list.c**.
-
-L'initialisation, la vérification et la création de nouveaux états du plateau de jeu sont gérées dans le module **board_k.c**.
-
-Les algorithmes sont implémentés dans le module **knights.c**.
+- La structure des noeuds est gérée dans le fichier **item.h**.
+- Toutes les fonctions qui permettent de créer, modifier ou rechercher à l'interieur des listes sont dans le module **list.c**.
+- L'initialisation, la vérification et la création de nouveaux états du plateau de jeu sont gérées dans le module **board_k.c**.
+- Les algorithmes sont implémentés dans le module **knights.c**.
 
 ### Compraison des algorithmes BFS, DFS et UCS
 
