@@ -70,14 +70,14 @@ void initBoard(Node node, char *board)
 
 	/* Copy board */
 
-	for (int i =0; i < MAX_BOARD; i++)
+	for (int i = 0; i < MAX_BOARD; i++)
 	{
 		node->board[i] = board[i];
 	}
 }
 
-// Return 0 if all queens are placed. Positive otherwise
-// Ie: nb queens that still need to be placed.
+// Return 0 if knight is at the right position. Positive otherwise
+// Ie: distance to the target position
 double evaluateBoard(Node node)
 {
 	int dist = MAX_BOARD;
@@ -88,12 +88,10 @@ double evaluateBoard(Node node)
 	i = 0;
 	while (i < MAX_BOARD)
 	{
-		// On trouve la case où est notre cavalier
+
 		if (board[i] == 1)
 		{
-			// printf("Cavalier case %d\n", i);
 			dist = MAX_BOARD - i - 1;
-			// printf(" -> dist = %d\n", dist);
 			return dist;
 		}
 		i++;
@@ -103,7 +101,7 @@ double evaluateBoard(Node node)
 }
 
 // Test if position pos is valid with respect to node's state
-// nQueens -> not same row ; not same column ; not same diagonal
+// knight -> moves two in a direction and one in another direction
 int isValidPosition(Node node, int pos)
 {
 	int ii = pos / WH_BOARD;
@@ -123,11 +121,10 @@ int isValidPosition(Node node, int pos)
 				{
 					valid++;
 				}
-
 			}
 		}
 	}
-	
+
 	return valid;
 }
 
@@ -139,18 +136,17 @@ Node getChildBoard(Node node, int pos)
 
 	if (isValidPosition(node, pos))
 	{
-		// printf("testvalid\n");
 		/* allocate and init child node */
 		child_p = nodeAlloc();
 
 		char *initial = (char *)malloc(MAX_BOARD * sizeof(char));
 		for (int i = 0; i < MAX_BOARD; i++)
-		initial[i] = 0;
+			initial[i] = 0;
 
 		initBoard(child_p, initial);
 
 		/* Make move (On place une nouvelle reine)*/
-		// Est ce qu'on doit vérifier avec evaluateBoard si les reines sont déjà placées ?
+
 		child_p->board[pos] = 1;
 
 		/* link child to parent for backtrack */

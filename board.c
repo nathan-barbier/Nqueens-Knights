@@ -69,7 +69,7 @@ void initBoard(Node node, char *board)
 
 	/* Copy board */
 
-	for (int i =0; i < MAX_BOARD; i++)
+	for (int i = 0; i < MAX_BOARD; i++)
 	{
 		node->board[i] = board[i];
 	}
@@ -139,13 +139,12 @@ Node getChildBoard(Node node, int pos)
 
 	if (isValidPosition(node, pos))
 	{
-		// printf("testvalid\n");
 		/* allocate and init child node */
 		child_p = nodeAlloc();
 		initBoard(child_p, node->board);
 
 		/* Make move (On place une nouvelle reine)*/
-		// Est ce qu'on doit vérifier avec evaluateBoard si les reines sont déjà placées ?
+
 		child_p->board[pos] = 1;
 
 		/* link child to parent for backtrack */

@@ -37,10 +37,8 @@ void bfs(void)
 	{
 		/* While items are on the open list */
 		/* Get the first item on the open list */
-		// printf("inf\n");
+
 		cur_node = popFirst(&openList_p);
-		// printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
-		// printBoard(cur_node);
 
 		/* Add it to the "visited" list */
 		addLast(&closedList_p, cur_node);
@@ -58,13 +56,11 @@ void bfs(void)
 			/* Enumerate adjacent states */
 			for (int i = 0; i < MAX_BOARD; i++)
 			{
-				// printf("loop1\n");
 				child_p = getChildBoard(cur_node, i);
 
 				if (child_p != NULL)
 				{
 					// it's a valid child!
-					// printBoard(child_p);
 
 					/* Ignore this child if already visited */
 					if (!onList(&closedList_p, child_p->board))
@@ -89,10 +85,7 @@ void dfs(void)
 	{
 		/* While items are on the open list */
 		/* Get the first item on the open list */
-		// printf("inf\n");
 		cur_node = popFirst(&openList_p);
-		// printf("Test : %d  %f\n", listCount(&openList_p), evaluateBoard( cur_node ));
-		// printBoard(cur_node);
 
 		/* Add it to the "visited" list */
 		addLast(&closedList_p, cur_node);
@@ -110,13 +103,11 @@ void dfs(void)
 			/* Enumerate adjacent states */
 			for (int i = 0; i < MAX_BOARD; i++)
 			{
-				// printf("loop1\n");
 				child_p = getChildBoard(cur_node, i);
 
 				if (child_p != NULL)
 				{
 					// it's a valid child!
-					// printBoard(child_p);
 
 					/* Ignore this child if already visited */
 					if (!onList(&closedList_p, child_p->board))
@@ -136,14 +127,16 @@ void UCS(void)
 
 	while (listCount(&openList_p))
 	{
+		/* Gets the best node on list */
 		cur_node = popBest(&openList_p);
 
-		//si c'est le bon noeud
+		
 		if (evaluateBoard(cur_node) == 0.0)
 		{
 			showSolution(cur_node);
 			return;
 		}
+		/* if not already visited */
 		if (!onList(&closedList_p, cur_node->board))
 		{
 			addLast(&closedList_p, cur_node);
@@ -155,16 +148,16 @@ void UCS(void)
 					temp = onList(&openList_p, child_p->board);
 					if (temp)
 					{
-						//printf("squalalala 1\n");
+						/* Compare score with node on the list to keep the best one */
 						if (temp->f > child_p->f)
 						{
 							delList(&openList_p, temp);
 							addLast(&openList_p, child_p);
 						}
 					}
+					
 					if (!onList(&closedList_p, child_p->board))
 					{
-						//printf("squalalala 2\n");
 						addLast(&openList_p, child_p);
 					}
 				}
