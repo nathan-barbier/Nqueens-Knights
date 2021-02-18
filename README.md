@@ -55,12 +55,18 @@ Ce projet est constitué de deux parties :
 
 ### Compraison des algorithmes
 
-| Algorithme | Etapes | Noeuds parcourus | Temps |
-| ----------- | ----------- | ----------- | ----------- |
-| BFS |  |  | ---- |
-| DFS | 8 | 1970 | +++ |
 
-> Dans ce cas l'algorithme de **parcourt en profondeur (DFS)** est nettement plus rapide.
+
+| Algorithme | Etapes | Noeuds parcourus | Temps             | Taille |
+| :--------: | :----: | :--------------: | :---------------: | :----: |
+| BFS        |   6    |       60190      |  ~10s             |  6x6   |
+| BFS        |        |                  |                   |  7x7   |
+|            |        |                  |                   |        |
+| DFS        |   8    |       1970       | <10<sup>-2</sup> s|  8x8   |
+|            |        |                  |                   |        |
+
+> Dans ce cas l'algorithme de **parcourt en profondeur (DFS)** est nettement plus rapide.  
+> Ces tests ont été réalisés **dans les mêmes conditions**. [1](#foot)
 
 ---
 
@@ -94,12 +100,23 @@ Ce projet est constitué de deux parties :
 
 ### Compraison des algorithmes BFS, DFS et UCS
 
-| Algorithme | Etapes | Noeuds parcourus | Temps |
-| ----------- | ----------- | ----------- | ----------- |
-| BFS | 6 | 584 | + |
-| DFS | 14 | 15 | ++ |
-| UCS | 6 | 73 | ++ |
 
-> Dans ce cas l'algorithme **UCS** est le plus efficace.
+| Algorithme | Etapes | Noeuds parcourus | Temps              |
+| ---------- | ------ | ---------------- | ------------------ |
+| BFS        | 6      | 584              | <10<sup>-2</sup> s |
+| DFS        | 14     | 15               | 10 s               |
+| UCS        | 6      | 73               | 5.10<sup>3</sup> s |
+
+
+> Dans ce cas l'algorithme **UCS** est le plus efficace.  
+> Ces tests ont été réalisés **dans les mêmes conditions**. [1](#foot)
+
+---
 
 ## Voir aussi : [***Jeu du taquin***](https://github.com/nathan-barbier/Taquin_IA)
+
+Réalisé en binôme avec [FABRE Mathis](https://github.com/yamana113)
+
+---
+
+<a name="foot"><sup>1</sup></a> Réalisés sur mon ordinateur personnel.
