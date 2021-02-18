@@ -55,12 +55,10 @@ Ce projet est constitué de deux parties :
 
 ### Compraison des algorithmes
 
-
-
 | Algorithme | Etapes | Noeuds parcourus | Temps             | Taille |
 | :--------: | :----: | :--------------: | :---------------: | :----: |
-| BFS        |   6    |       60190      |  ~10s             |  6x6   |
-| BFS        |        |                  |                   |  7x7   |
+| BFS        |   5    |       3499       | <10<sup>-2</sup> s|  5x5   |
+| BFS        |   6    |       60190      |  ~10 s            |  6x6   |
 |            |        |                  |                   |        |
 | DFS        |   8    |       1970       | <10<sup>-2</sup> s|  8x8   |
 |            |        |                  |                   |        |
@@ -100,13 +98,11 @@ Ce projet est constitué de deux parties :
 
 ### Compraison des algorithmes BFS, DFS et UCS
 
-
 | Algorithme | Etapes | Noeuds parcourus | Temps              |
-| ---------- | ------ | ---------------- | ------------------ |
+| ---------- | :----: | :--------------: | :----------------- |
 | BFS        | 6      | 584              | <10<sup>-2</sup> s |
 | DFS        | 14     | 15               | 10 s               |
 | UCS        | 6      | 73               | 5.10<sup>3</sup> s |
-
 
 > Dans ce cas l'algorithme **UCS** est le plus efficace.  
 > Ces tests ont été réalisés **dans les mêmes conditions**. [1](#foot)
