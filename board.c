@@ -10,7 +10,6 @@
 // Initialize a new Game for the nQueens problem: an empty board..
 Node initGame()
 {
-	int i;
 	Node node;
 
 	char *initial = (char *)malloc(MAX_BOARD * sizeof(char));
@@ -80,7 +79,7 @@ void initBoard(Node node, char *board)
 // Ie: nb queens that still need to be placed.
 double evaluateBoard(Node node)
 {
-	int nb = 8;
+	int nb = WH_BOARD;
 	int i;
 	char *board = node->board;
 	char isQueen;
