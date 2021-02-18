@@ -192,12 +192,12 @@ void addLast(list_t *list, Item *node) // add in tail
 	(list->numElements)++; // incrementer le nombre de el de la liste
 }
 
-//fonction qui nettoie une liste
+// fonction qui nettoie une liste
 void cleanupList(list_t *list)
 {
-	Item *delnode = (list->first);					 //pointer le node à suppr premier el de la liste
-	Item *psuiv;									 //el suivant
-	while (delnode != NULL && delnode->next != NULL) //tant que l'on a pas atteint le dernier el
+	Item *delnode = (list->first);					 // pointer le node à suppr premier el de la liste
+	Item *psuiv;									 // el suivant
+	while (delnode != NULL && delnode->next != NULL) // tant que l'on a pas atteint le dernier el
 	{
 		psuiv = delnode->next;	// poser le suivant
 		delList(list, delnode); // supprimer le node
